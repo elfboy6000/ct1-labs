@@ -1,5 +1,6 @@
 --cpu Cortex-M0
 ".\build\table.o"
+".\build\table_halfword.o"
 ".\build\datainit_ctboard.o"
 ".\build\startup_ctboard.o"
 ".\build\system_ctboard.o"

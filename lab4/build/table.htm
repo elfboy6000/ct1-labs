@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\build\table.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\build\table.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Fri Oct 10 09:17:10 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Thu Oct 23 14:08:49 2025
 <BR><P>
 <H3>Maximum Stack Usage =        312 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -130,7 +130,7 @@ Function Pointers
  <LI><a href="#[a]">WWDG_IRQHandler</a> from startup_ctboard.o(.text) referenced from startup_ctboard.o(RESET)
  <LI><a href="#[67]">__main</a> from datainit_ctboard.o(.text) referenced from startup_ctboard.o(.text)
  <LI><a href="#[66]">__system</a> from system_ctboard.o(.text) referenced from startup_ctboard.o(.text)
- <LI><a href="#[65]">main</a> from table.o(myCode) referenced from datainit_ctboard.o(.text)
+ <LI><a href="#[65]">main</a> from table_halfword.o(myCode) referenced from datainit_ctboard.o(.text)
 </UL>
 <P>
 <H3>
@@ -943,7 +943,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_get_argv
 </UL>
 
-<P><STRONG><a name="[65]"></a>main</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, table.o(myCode))
+<P><STRONG><a name="[65]"></a>main</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, table_halfword.o(myCode))
 <BR><BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 <BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
