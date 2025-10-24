@@ -53,8 +53,8 @@ endless
         LDR     R3, [R2]                    ; R3 = DIP value (32-bit)
 
         ; ---- 64-bit add: (R1:R0) += R3 ----
-        ADDS    R0, R0, R3                  ; low += input, sets C if carry
-        MOVS    R4, #0                      ; temp = 0  (does NOT clear C)
+        MOVS    R4, #0                       ; temp = 0 (Do it before to avoid losing flag)
+        ADDS    R0, R0, R3                   ; low += input, sets C if carry
         ADCS    R1, R1, R4                  ; high += carry
 
         ; ---- display 64-bit sum on LCD binary interface ----
