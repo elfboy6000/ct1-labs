@@ -21,24 +21,23 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.3.1.0
 Dialog DLL:      TARMCM1.DLL V1.14.6.0
  
 <h2>Project:</h2>
-C:\Users\elfbo\NotCorrupted\CT1\ct1-labs\lab4\table.uvprojx
+C:\Users\elfbo\NotCorrupted\CT1\ct1-labs\lab6\bcd\bcd.uvprojx
 Project File Date:  10/24/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.24', folder: 'C:\Users\elfbo\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-assembling table.s...
-compiling system_ctboard.c...
-compiling hal_fmc.c...
 compiling hal_pwr.c...
+compiling hal_fmc.c...
+assembling main.s...
 assembling datainit_ctboard.s...
-assembling table_halfword.s...
-compiling hal_gpio.c...
-compiling hal_rcc.c...
+compiling system_ctboard.c...
 assembling startup_ctboard.s...
+compiling hal_rcc.c...
+compiling hal_gpio.c...
 linking...
-Program Size: Code=8240 RO-data=980 RW-data=32 ZI-data=8192  
-".\build\table.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=7848 RO-data=964 RW-data=0 ZI-data=8192  
+".\build\bcd.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -61,37 +60,37 @@ Package Vendor: InES
 <h2>Collection of Component Files used:</h2>
 
    * Component: InES::Device:Startup@4.0.4
-      Include file:  Device/Include/reg_ctboard.h
-      Source file:   Device/Source/datainit_ctboard.s
-      Include file:  Device/Include/system_ctboard.h
       Include file:  Device/Include/m0/platform_ctboard.h
-      Source file:   Device/Source/system_ctboard.c
+      Include file:  Device/Include/system_ctboard.h
       Include file:  Device/Include/reg_stm32f4xx.h
       Source file:   Device/Source/startup_ctboard.s
+      Source file:   Device/Source/system_ctboard.c
+      Source file:   Device/Source/datainit_ctboard.s
+      Include file:  Device/Include/reg_ctboard.h
 
    * Component: InES::HAL:FMC@4.0.4
-      Include file:  HAL/Include/hal_fmc.h
-      Include file:  HAL/Include/hal_common.h
-      Source file:   HAL/Source/hal_fmc.c
       Include file:  Device/Include/reg_stm32f4xx.h
+      Include file:  HAL/Include/hal_fmc.h
+      Source file:   HAL/Source/hal_fmc.c
+      Include file:  HAL/Include/hal_common.h
 
    * Component: InES::HAL:GPIO@4.0.4
       Include file:  HAL/Include/hal_common.h
+      Include file:  Device/Include/reg_stm32f4xx.h
       Include file:  HAL/Include/hal_gpio.h
       Source file:   HAL/Source/hal_gpio.c
-      Include file:  Device/Include/reg_stm32f4xx.h
 
    * Component: InES::HAL:PWR@4.0.4
-      Include file:  Device/Include/reg_stm32f4xx.h
+      Include file:  HAL/Include/hal_common.h
       Source file:   HAL/Source/hal_pwr.c
       Include file:  HAL/Include/hal_pwr.h
-      Include file:  HAL/Include/hal_common.h
+      Include file:  Device/Include/reg_stm32f4xx.h
 
    * Component: InES::HAL:RCC@4.0.4
       Include file:  Device/Include/reg_stm32f4xx.h
-      Include file:  HAL/Include/hal_rcc.h
-      Source file:   HAL/Source/hal_rcc.c
       Include file:  HAL/Include/hal_common.h
+      Source file:   HAL/Source/hal_rcc.c
+      Include file:  HAL/Include/hal_rcc.h
 Build Time Elapsed:  00:00:00
 </pre>
 </body>
