@@ -35,7 +35,7 @@ LCD_BACKLIGHT_FULL      EQU     0xffff
 LCD_BACKLIGHT_OFF       EQU     0x0000
 
 BITMASK_LOWER_NIBBLE    EQU     0x0F
-BITMASK_KEY_T0          EQU     0x01
+BITMASK		            EQU     0x01
 	
 ; ------------------------------------------------------------------
 ; -- myCode
@@ -68,11 +68,11 @@ main    PROC
 		STRB  R3, [R6]						; Display to LED7..0
 		STRB  R3, [R7]						; Display to DS1..0
 		
-
+		
 		; Check if T0 Pressed
 		LDR R5, =ADDR_BUTTONS				; Buttons
 		LDRB R5, [R5]						; Load Values of Buttons
-		MOVS R2, #BITMASK_KEY_T0			; T0 On
+		MOVS R2, #BITMASK					; Bitmask for T0 On
 		TST R5, R2							; T0 == On ? (Z = 0)
 		BNE red								; If Z == 0	
 		
@@ -121,6 +121,48 @@ red
 		STRH R0, [R4]						; Turn Blue to Off
 		
 end_color
+
+		; Get One Counts
+        MOV     R3, R2						; R3 = BCD Ones							
+		MOVS    R2, #0                		; R2 = 0 (One Counter)
+        MOVS    R5, #16						; R5 =  16 (Loop times)
+        MOVS    R6, #BITMASK				; R6 = 0x01 
+
+count_ones
+        CMP     R5, #0						; While R5 > 0
+        BEQ     build_bar					; When it's finished counting
+        TST     R3, R6						; R3 == 1 ?	(Z = 0)
+        BEQ     skip_add					; Z == 1
+		
+		LSLS    R2, #1						; Shift to left by 1
+        ADDS    R2, #1						; Add the extra 1
+		
+skip_add
+        LSRS    R3, R3, #1					; Read next BCD value
+        SUBS    R5, R5, #1					; Loop completed
+        B       count_ones					; Count next bit
+
+
+		; Animate Bar
+build_bar
+        LDR     R0, =ADDR_LED_31_16			; R0 = LED31..16
+        STRH    R2, [R0]					; Display Count Ones
+
+        MOV     R3, R2						; R3 = Count Ones (lower)
+        LSLS    R4, R2, #16					; R4 = Count Ones (upper)				
+        ORRS    R3, R3, R4					; R3 = lower | upper (merged)
+
+        MOVS    R5, #0						; R5 = 0 (Rotation counter)
+		
+rotate_loop
+        MOVS    R6, #1          			; R6 = 1 (rotation amount)
+        RORS    R3, R3, R6      			; Rotate R3 by 1
+        STRH    R3, [R0]					; Display rotated value on LED31..16
+        BL      pause						; Wait for delay
+        ADDS    R5, R5, #1					; R5++	
+        CMP     R5, #16						; One full cycle (16 steps)
+        BLO     rotate_loop					; Repeat loop
+
 ; END: To be programmed
 
         B       main
